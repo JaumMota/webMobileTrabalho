@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %} {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>{% block title %}Desenvolvimento web-mobile{% endblock %}</title>
+  </head>
+  <body class="bg-light">
+    <div class="container d-flex flex-column my-5">
+      <div
+        id="menu-superior"
+        class="d-flex justify-content-between align-items-center mb-2"
+      >
+        {% block menu-superior %}
+        <div class="d-flex flex-row gap-2">
+          <a href="/" class="btn btn-info text-white fw-bolder">
+            Página Inicial
+          </a>
+          {% if user.is_authenticated %}
+          <button
+            class="btn btn-outline-info dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           Hábitos
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/habito">Visualizar todos</a></li>
+            <li><a class="dropdown-item" href="/habito/novo">Cadastrar</a></li>
+          </ul>
+          <button
+            class="btn btn-outline-info dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           Calendário
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/habito/calendario">Visualizar calendário</a></li>
+          </ul>
+          {% else %}
+          <a href="/habito" class="btn btn-outline-info">
+            Hábitos
+          </a>
+          <a href="/calendario" class="btn btn-outline-info">
+            Calendário
+          </a>
+          {% endif %}
+        </div>
+        <button
+          class="btn btn-outline-info dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+        {% if user.is_authenticated %}
+          Olá, {{ user }}
+        {% else %}
+        Olá, Convidado
+        {% endif %}
+        </button>
+        <ul class="dropdown-menu">
+          {% if user.is_authenticated %}
+          <li><a class="dropdown-item" href="/logout">Sair</a></li>
+          {% else %}
+          <li><a class="dropdown-item" href="/login">Entrar</a></li>
+          {% endif %}
+        </ul>
+        {% endblock %}
+      </div>
+      <div id="conteudo" class="card rounded py-5">
+        {% block conteudo %}{% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

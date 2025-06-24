@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load habito_extras %}
+{% block conteudo %}
+<h1 class="text-start" style="margin-left: 25px;">Lista de Hábitos</h1>
+<div class="d-flex flex-wrap gap-3" style="margin-left: 25px;">
+    {% for item in habitos_com_checks %}
+    <div class="card text-center p-3" style="width: 250px; height: 250px; position: relative;">
+        <h5 class="card-title mb-3">{{ item.habito.nome }}</h5>
+        <p class="mt-2">{{ item.check.data|date:"d/m/Y" }}</p> <!-- Data antes do checkbox -->
+        <form method="POST" action="{% url 'marcar_habito' item.habito.id %}">
+            {% csrf_token %}
+            <input type="checkbox" id="check-{{ item.habito.id }}" name="feito" 
+                   {% if item.check and item.check.feito %}checked{% endif %} 
+                   onchange="this.form.submit()" 
+                   style="width: 50px; height: 50px; accent-color: #28a745;">
+        </form>
+        <div class="d-flex gap-2" style="position: absolute; bottom: 10px; left: 10px;">
+            <a href="{% url 'editar_habito' item.habito.id %}" class="btn btn-info btn-sm text-white">
+                <i class="bi bi-pencil"></i>
+            </a>
+            <a href="{% url 'excluir_habito' item.habito.id %}" class="btn btn-danger btn-sm text-white"
+               onclick="return confirm('Você tem certeza que deseja excluir este hábito?');">
+                <i class="bi bi-trash"></i>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

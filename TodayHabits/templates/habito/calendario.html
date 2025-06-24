@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 class="text-start" style="margin-left: 25px;">Calendário</h1>
+<div class="d-flex flex-wrap gap-3" style="margin-left: 25px;">
+    {% for dia in dias %}
+    <div class="card text-center p-3" style="width: 150px; height: 150px;">
+        <h5 class="card-title">{{ dia|date:"d/m/Y" }}</h5>
+        <input type="checkbox" disabled 
+               {% if dia in dias_completos %}checked{% endif %} 
+               style="width: 30px; height: 30px; accent-color: #28a745;">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

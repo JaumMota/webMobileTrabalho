@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 class="text-start" style="margin-left: 25px;">Criar Novo Hábito</h1>
+<form method="POST" class="p-4" style="max-width: 400px; margin-left: 25px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome do Hábito:</label>
+        <input type="text" id="nome" name="nome" class="form-control" style="border-radius: 10px;" required>
+    </div>
+    <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição:</label>
+        <textarea id="descricao" name="descricao" class="form-control" style="border-radius: 10px;" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Criar</button>
+</form>
+<a href="{% url 'lista_habitos' %}" class="btn btn-secondary btn-sm" style="margin-left: 25px; margin-top: 10px;">Voltar</a>
+{% endblock %}
