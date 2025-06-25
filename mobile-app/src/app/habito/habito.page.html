@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Lista de Hábitos</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botão de sair com o nome do usuário -->
+      <ion-button (click)="confirmarSaida()">
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        {{ usuario.nome || 'Sair' }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Exibir a data atual -->
+  <ion-toolbar color=#007bff>
+    <ion-title>{{ hoje | date: 'dd/MM/yyyy' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <!-- Lista de hábitos -->
+    <ion-item class="minimal-item" *ngFor="let habito of lista_habitos">
+      <ion-label>
+        <h1 style="color: black; font-weight: bold; display: block;">{{ habito.nome }}</h1>
+        <p>{{ habito.descricao }}</p>
+      </ion-label>
+
+      <!-- Botão visual para marcar/desmarcar -->
+      <div
+        (click)="alternarFeito(habito)"
+        [ngStyle]="{
+          width: '24px',
+          height: '24px',
+          border: '2px solid #ccc',
+          borderRadius: '4px',
+          backgroundColor: habito.feito ? '#28a745' : 'transparent',
+          cursor: 'pointer',
+          marginRight: '12px'
+        }"
+        slot="start">
+      </div>
+
+      <ion-buttons slot="end" class="end-buttons">
+        <!-- Botão de editar -->
+        <ion-button color="primary" (click)="editarHabito(habito.id)">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>
+        <!-- Botão de excluir -->
+        <ion-button color="danger" (click)="excluirHabito(habito.id)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botão para adicionar um novo hábito -->
+  <ion-button expand="block" color="primary" (click)="criarHabito()" class="novo-habito-button">
+    <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+    Novo Hábito
+  </ion-button>
+
+  <!-- Formulário para adicionar um novo hábito -->
+  <ion-card *ngIf="exibirFormulario">
+    <ion-card-header>
+      <ion-card-title>Adicionar Novo Hábito</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="habitoForm">
+        <ion-item>
+          <ion-label position="stacked">Nome</ion-label>
+          <ion-input formControlName="nome" placeholder="Digite o nome do hábito"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Descrição</ion-label>
+          <ion-input formControlName="descricao" placeholder="Digite a descrição do hábito"></ion-input>
+        </ion-item>
+        <ion-button expand="block" color="primary" (click)="adicionarHabito()">Salvar</ion-button>
+        <ion-button expand="block" color="light" (click)="cancelarCriacao()">Cancelar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

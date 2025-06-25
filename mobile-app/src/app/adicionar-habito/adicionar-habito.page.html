@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Adicionar Hábito</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/habito"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Adicionar Novo Hábito</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="habitoForm">
+        <ion-item>
+          <ion-label position="stacked">Nome</ion-label>
+          <ion-input formControlName="nome" placeholder="Digite o nome do hábito"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Descrição</ion-label>
+          <ion-input formControlName="descricao" placeholder="Digite a descrição do hábito"></ion-input>
+        </ion-item>
+        <ion-button expand="block" color="primary" (click)="adicionarHabito()">Salvar</ion-button>
+        <ion-button expand="block" color="light" (click)="cancelarCriacao()">Cancelar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

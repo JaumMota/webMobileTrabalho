@@ -1,0 +1,76 @@
+/* filepath: /home/jaum-mota/webMobileTrabalho/mobile-app/src/app/habito/habito.page.scss */
+
+ion-toolbar {
+    --background: #007bff; /* Azul primário para a barra superior */
+    --color: #ffffff; /* Cor do texto na barra superior */
+}
+
+ion-content {
+    --background: #121212; /* Fundo escuro para todo o conteúdo */
+    padding: 0;
+}
+
+ion-list {
+    --background: #121212; /* Fundo escuro para a lista de itens */
+    padding: 16px; /* Adiciona padding à lista para espaçamento do conteúdo */
+}
+
+.minimal-item {
+    --background: #ffffff; /* Fundo branco para cada item (contraste com o fundo escuro) */
+    border: 1px solid #e0e0e0; /* Borda fina e sutil */
+    border-radius: 8px; /* Cantos levemente arredondados */
+    margin-bottom: 12px; /* Espaçamento entre os itens */
+    box-shadow: none; /* Sem sombra para um visual plano */
+    --inner-padding-end: 8px; /* Ajusta o padding interno para os botões */
+    --inner-padding-start: 16px; /* Ajusta o padding interno para o texto */
+    width: calc(100% - 0px); /* Ocupa 100% da largura da lista (o padding já está na lista) */
+    margin-left: auto; /* Centraliza o item */
+    margin-right: auto; /* Centraliza o item */
+}
+
+.minimal-item h2.text-primary {
+    color: #333333; /* Cor mais escura para o título (visível no fundo branco do item) */
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.minimal-item p.text-secondary {
+    color: #666666; /* Cor mais suave para a descrição/data (visível no fundo branco do item) */
+    font-size: 0.9em;
+}
+
+/* Ajuste para os botões e ícones dentro do item */
+ion-buttons.end-buttons {
+    display: flex;
+    gap: 4px; /* Espaçamento entre os botões */
+}
+
+ion-button {
+  font-size: 0.9em;
+}
+
+ion-popover {
+  --background: #ffffff; /* Fundo branco para o dropdown */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --width: 200px; // Define a largura do popover
+  --height: auto; // Define a altura do popover
+}
+
+ion-item {
+  --background: transparent;
+}
+
+.novo-habito-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.check-button {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+/* Removidos estilos não utilizados ou sobrepostos */
+/* .custom-card, .custom-item, e a definição anterior de .minimal-item foram removidos */
