@@ -8,7 +8,6 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
 import { Habito } from './habito.model';
 import { Router } from '@angular/router';
 
-// 👇 Adicionada constante para base URL
 const API_BASE_URL = 'http://10.90.8.231:8000';
 
 @Component({
@@ -60,8 +59,7 @@ export class HabitoPage implements OnInit {
       descricao: ['', Validators.required]
     });
   }
-
-  // ✅ Adicionado para atualizar a lista ao retornar para a página
+  
   ionViewWillEnter() {
     if (this.usuario?.token) {
       this.consultarHabitosSistemaWeb();
@@ -88,8 +86,8 @@ export class HabitoPage implements OnInit {
               habito.id,
               habito.nome,
               habito.descricao,
-              habito.data || null, // Assuming `data` can be null
-              habito.feito || false // Assuming `feito` defaults to false
+              habito.data || null, 
+              habito.feito || false 
             )
           );
           loading.dismiss();
@@ -210,8 +208,8 @@ export class HabitoPage implements OnInit {
             resposta.data.id,
             resposta.data.nome,
             resposta.data.descricao,
-            resposta.data.data || null, // Assuming `data` can be null
-            resposta.data.feito || false // Assuming `feito` defaults to false
+            resposta.data.data || null, 
+            resposta.data.feito || false 
           );
 
           this.lista_habitos.push(habitoCriado);

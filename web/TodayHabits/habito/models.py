@@ -3,10 +3,10 @@ from django.db import models
 from django.utils import timezone
 
 class Habito(models.Model):
-    nome = models.CharField(max_length=100)
-    descricao = models.TextField()
+    nome = models.CharField(max_length=100) # Nome do hábito
+    descricao = models.TextField() # Descrição do hábito
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Relaciona o hábito ao usuário
-    data = models.DateField(auto_now_add=True)  # <-- Adiciona isso aqui!
+    data = models.DateField(auto_now_add=True) # Data de criação do hábito
 
     def __str__(self):
         return self.nome

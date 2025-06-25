@@ -17,7 +17,7 @@ import { CapacitorHttp, HttpOptions } from '@capacitor/core';
   ]
 })
 export class AdicionarHabitoPage implements OnInit {
-  public habitoForm!: FormGroup; // Adicionado o operador "!"
+  public habitoForm!: FormGroup; 
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +41,7 @@ export class AdicionarHabitoPage implements OnInit {
     const novoHabito = this.habitoForm.value;
 
     const options: HttpOptions = {
-      url: 'http://127.0.0.1:8000/api/habitos/criar/', // <-- CORRIGIDO AQUI
+      url: 'http://127.0.0.1:8000/api/habitos/criar/', 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

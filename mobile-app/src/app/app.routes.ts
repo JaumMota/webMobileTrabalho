@@ -7,7 +7,7 @@ export const routes: Routes = [
   },
   {
     path: 'habito',
-    loadComponent: () => import('./habito/habito.page').then((m) => m.HabitoPage), // Atualizado para refletir a nova estrutura
+    loadComponent: () => import('./habito/habito.page').then((m) => m.HabitoPage), 
   },
   {
     path: '',

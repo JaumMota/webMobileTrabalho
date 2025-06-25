@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CapacitorHttp, HttpOptions } from '@capacitor/core';
-import { Storage } from '@ionic/storage-angular'; // Importação do Storage
+import { Storage } from '@ionic/storage-angular'; 
 
 @Component({
   standalone: true,
@@ -25,7 +25,7 @@ export class EditarHabitoPage implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private storage: Storage // Adicionado para recuperar o token
+    private storage: Storage 
   ) {}
 
   async ngOnInit() {
@@ -57,7 +57,7 @@ export class EditarHabitoPage implements OnInit {
     const dadosAtualizados = this.habitoForm.value;
 
     const options: HttpOptions = {
-      method: 'PUT', // Método HTTP explícito
+      method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Token ${token}` // Usa o token recuperado do Storage
@@ -84,8 +84,7 @@ export class EditarHabitoPage implements OnInit {
   }
 
   carregarHabito() {
-    // Simulação: substitua por uma chamada ao backend para obter os dados do hábito
-    const habito = { nome: 'Hábito Atual', descricao: 'Descrição Atual' }; // Exemplo
+    const habito = { nome: 'Hábito Atual', descricao: 'Descrição Atual' }; 
     this.habitoForm.patchValue(habito);
   }
 }

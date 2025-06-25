@@ -3,7 +3,7 @@ export class Habito {
     public id: number,
     public nome: string,
     public descricao: string,
-    public data: Date | null, // Permite que o campo seja null
+    public data: Date | null, 
     public feito: boolean
   ) {}
 }
